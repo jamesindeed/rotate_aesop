@@ -15,6 +15,8 @@
 
   @media (max-width: 1025px) {
     font-weight: 500;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 0 34px;
   }
 
   .nav_left,
@@ -49,6 +51,10 @@
         .search {
           // To fix position
           transform: translateY(3px);
+
+          @media (max-width: 1025px) {
+            transform: translateY(2px);
+          }
         }
 
         a,
@@ -56,15 +62,18 @@
           cursor: pointer;
           padding: 4px;
           color: #333;
+
+          @media (max-width: 1025px) {
+            padding: 5px;
+          }
         }
       }
     }
   }
 
   .nav_right {
-    button:last-child {
-      padding-right: 0px;
-    }
+    // To fix position
+    transform: translateX(5px);
 
     .cart_items {
       margin-left: 10px;
@@ -88,4 +97,9 @@
   font-weight: 400;
   outline: none;
   text-decoration: none;
+
+  @media (max-width: 1025px) {
+    top: 207px;
+    left: 34px;
+  }
 }

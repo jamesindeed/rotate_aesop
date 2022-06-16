@@ -15,6 +15,10 @@
   color: #fffef2;
   padding: 12px 20px 8px;
 
+  @media (max-width: 1025px) {
+    padding-bottom: 9.5px;
+  }
+
   .info {
     width: 100%;
     display: flex;
