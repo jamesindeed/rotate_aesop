@@ -1,4 +1,6 @@
 .info_container {
+  // Need to fix position
+  transform: translateY(-1px);
   z-index: 2;
   clear: both;
   overflow: visible;
@@ -21,6 +23,8 @@
     flex-direction: row;
     margin: 0;
     display: flex;
+    // Need to fix position
+    transform: translateX(-1px);
 
     @media (min-width: 1025px) {
       justify-content: center;
@@ -48,6 +52,7 @@
 
     .icon {
       margin-left: 20px;
+      transform: translate(1px, 1px);
     }
   }
 }

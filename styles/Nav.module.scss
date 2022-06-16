@@ -24,6 +24,7 @@
     transform: translateX(-5px);
 
     ul {
+      transform: translateY(-1px);
       display: flex;
       padding-left: 0;
       margin-top: 0;
@@ -45,6 +46,11 @@
           margin-right: 0;
         }
 
+        .search {
+          // To fix position
+          transform: translateY(3px);
+        }
+
         a,
         button {
           cursor: pointer;
@@ -59,5 +65,27 @@
     button:last-child {
       padding-right: 0px;
     }
+
+    .cart_items {
+      margin-left: 10px;
+    }
   }
+}
+
+.logo {
+  box-sizing: content-box;
+  padding: 5px;
+  top: 222px;
+  left: 40px;
+  position: absolute;
+  z-index: 20;
+  pointer-events: auto;
+  -webkit-transform: translateX(-5px);
+  transform: translateX(-5px);
+  display: inline-block;
+  font-family: 'Suisse Regular', sans-serif;
+  font-size: inherit;
+  font-weight: 400;
+  outline: none;
+  text-decoration: none;
 }
