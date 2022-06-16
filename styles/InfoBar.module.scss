@@ -1,0 +1,53 @@
+.info_container {
+  z-index: 2;
+  clear: both;
+  overflow: visible;
+  width: 100%;
+  font-family: 'Suisse';
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  background: #252525;
+  color: #fffef2;
+  padding: 12px 20px 8px;
+
+  .info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+    display: flex;
+
+    @media (min-width: 1025px) {
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      border: 1px solid transparent;
+      transition: border 0.5s ease-in-out;
+
+      &:hover {
+        border-bottom: 1px solid #fff;
+      }
+    }
+
+    p {
+      text-align: left;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      margin: 0;
+      flex-grow: 2;
+
+      @media (min-width: 1025px) {
+        text-align: center;
+      }
+    }
+
+    .icon {
+      margin-left: 20px;
+    }
+  }
+}
