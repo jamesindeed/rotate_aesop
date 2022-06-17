@@ -37,6 +37,7 @@ html {
 *:before,
 *:after {
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 body {
@@ -46,7 +47,6 @@ body {
   -webkit-font-smoothing: antialiased;
   font-variant-ligatures: common-ligatures;
   text-rendering: optimizelegibility;
-  overflow-x: hidden;
 }
 
 img {
