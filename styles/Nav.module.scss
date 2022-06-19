@@ -19,11 +19,17 @@
     padding: 0 34px;
   }
 
+  @media (max-width: 640px) {
+    border-bottom: 0px;
+    padding: 0px;
+  }
+
   .nav_left,
   .nav_right {
     pointer-events: none;
-    -webkit-transform: translateX(-5px);
+
     transform: translateX(-5px);
+    overflow: hidden !important;
 
     ul {
       transform: translateY(-1px);
@@ -37,8 +43,7 @@
       li {
         display: flex;
         height: 80px;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
+
         align-items: center;
         border-bottom: 2px solid transparent;
         margin-right: 1.3vw;
@@ -89,7 +94,7 @@
   position: absolute;
   z-index: 20;
   pointer-events: auto;
-  -webkit-transform: translateX(-5px);
+
   transform: translateX(-5px);
   display: inline-block;
   font-family: 'Suisse Regular', sans-serif;
@@ -101,5 +106,88 @@
   @media (max-width: 1025px) {
     top: 207px;
     left: 34px;
+  }
+}
+
+// TODO
+.nav > .nav_mobile_wrapper {
+  width: 100vw;
+  padding: 0px;
+
+  .nav_mobile {
+    display: flex;
+    height: 80px;
+
+    align-items: center;
+
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+    overflow: hidden !important;
+
+    li {
+      overflow: hidden !important;
+      margin: 0px 12px;
+      box-sizing: border-box;
+
+      &:first-child {
+        flex-grow: 1;
+        margin-left: 0 !important;
+        transform: translate(-5px, 1px);
+      }
+
+      &:last-child {
+        margin-left: 7px !important;
+        margin-right: 0 !important;
+      }
+
+      .logo_mobile {
+        padding: 5px;
+        width: 70px;
+        height: 22px;
+        color: #333;
+        text-align: center;
+
+        svg {
+          height: 22px;
+          width: 70px;
+        }
+      }
+
+      .mobile_search {
+        padding: 5px;
+        height: 16px;
+        width: 16px;
+
+        svg {
+          transform: translate(5px, 1px);
+        }
+      }
+
+      .mobile_menu {
+        box-sizing: content-box;
+        padding: 5px;
+        transform: translate(7px, 0px);
+
+        .icon {
+          left: 51px;
+          width: 22px;
+          height: 22px;
+        }
+      }
+
+      .mobile_cart {
+        transform: translate(5px, -1px);
+        padding: 5px;
+        .cart_items_mobile {
+          margin-left: 10px;
+        }
+      }
+    }
   }
 }
