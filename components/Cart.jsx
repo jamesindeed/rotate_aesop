@@ -1,9 +1,11 @@
 import React from 'react'
 import styles from '../styles/Cart.module.scss'
 import useWindowSize from '../utils/useWindowSize'
+import { useStateContext } from '../context/context'
 
 const Cart = () => {
   const { width } = useWindowSize()
+  const { showCart, setShowCart } = useStateContext()
 
   return (
     <div className={styles.cart}>
@@ -13,7 +15,11 @@ const Cart = () => {
             <div className={styles.cart_products_title}>Cart</div>
             <div className={styles.cart_products_size}>Size</div>
             <div className={styles.cart_products_quantity}>Quantity</div>
-            <button className={styles.cart_products_btn}>
+            <button
+              className={styles.cart_products_btn}
+              type='button'
+              onClick={() => setShowCart(false)}
+            >
               <svg className='Icon' role='img' viewBox='0 0 50 50'>
                 <g>
                   <polygon points='50,5 45,0 25,20 5,0 0,5 20,25 0,45 5,50 25,30 45,50 50,45 30,25'></polygon>
