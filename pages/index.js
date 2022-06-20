@@ -7,7 +7,7 @@ const Home = ({ products }) => {
     <div className={styles.main}>
       <h1>Rotate Aesop</h1>
       {products?.map((product) => (
-        <a href='/'>
+        <a key={product._id} href={`/product/${product.slug.current}`}>
           <h3>[ {product.title} ]</h3>
         </a>
       ))}
