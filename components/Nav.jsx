@@ -70,7 +70,7 @@ const Nav = () => {
             </ul>
           </nav>
         )}
-        {width > 640 && (
+        {width > 640 && width < 1025 && (
           <nav className={styles.nav_left}>
             <ul>
               <li>
@@ -212,7 +212,7 @@ const Nav = () => {
             </g>
           </svg>
         )}
-        {width > 640 ? (
+        {width > 640 && width < 1025 ? (
           <svg
             aria-labelledby='aesop-2657'
             data-testid='data-testid-Icon'
