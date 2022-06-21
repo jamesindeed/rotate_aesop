@@ -12,6 +12,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'price',
+      title: 'Price',
+      type: 'number',
+    },
+    {
       name: 'sizes',
       title: 'Sizes',
       type: 'array',
