@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { client, urlFor } from '../../lib/client'
 import styles from '../../styles/Product.module.scss'
 import useWindowSize from '../../utils/useWindowSize'
+import { useStateContext } from '../../context/context'
 
 const ProductDetails = ({ product }) => {
   const { width } = useWindowSize()
+  const { onAdd, variant, setVariant } = useStateContext()
 
   console.log('product', product)
+
+  const handleChange = (e) => {
+    setVariant(e.target.value)
+  }
+
   return (
     <div className={styles.product_container}>
       <div className={styles.product_wrapper}>
@@ -92,7 +99,14 @@ const ProductDetails = ({ product }) => {
                 <ul>
                   <li>
                     <label>
-                      <input aria-checked='true' type='radio' name='radio' />
+                      <input
+                        value={product.sizes[0]}
+                        onChange={handleChange}
+                        aria-checked='true'
+                        type='radio'
+                        name='radio'
+                        checked
+                      />
                       <span className={styles.product_radio}></span>
                       <span className={styles.product_size}>
                         {product.sizes[0]}
@@ -101,7 +115,13 @@ const ProductDetails = ({ product }) => {
                   </li>
                   <li>
                     <label>
-                      <input aria-checked='true' type='radio' name='radio' />
+                      <input
+                        value={product.sizes[1]}
+                        onChange={handleChange}
+                        aria-checked='true'
+                        type='radio'
+                        name='radio'
+                      />
                       <span className={styles.product_radio}></span>
                       <span className={styles.product_size}>
                         {product.sizes[1]}
@@ -109,10 +129,12 @@ const ProductDetails = ({ product }) => {
                     </label>
                   </li>
                 </ul>
-                <button className={styles.product_add_cart}>
+                <button
+                  className={styles.product_add_cart}
+                  onClick={() => onAdd(product)}
+                >
                   <span>Add to your cart — £{product.price}.00</span>
                 </button>
-                {/* ?? */}
                 <div></div>
               </div>
               <div className={styles.product_details_upsell}>
@@ -161,9 +183,12 @@ const ProductDetails = ({ product }) => {
             <figure>
               <picture>
                 <img
-                  loading='lazy'
                   alt='In Two Minds Facial Cleanser in amber glass bottle '
-                  src={urlFor(product.Images[0])}
+                  src={
+                    variant === '200 mL'
+                      ? urlFor(product.Images[1])
+                      : urlFor(product.Images[0])
+                  }
                 />
               </picture>
             </figure>
