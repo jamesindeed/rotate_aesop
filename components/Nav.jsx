@@ -7,7 +7,7 @@ import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 
 const Nav = () => {
   const { width } = useWindowSize()
-  const { showCart, setShowCart } = useStateContext()
+  const { showCart, setShowCart, totalQuantities } = useStateContext()
 
   return (
     <>
@@ -163,7 +163,10 @@ const Nav = () => {
                   className={styles.mobile_cart}
                   onClick={() => setShowCart(true)}
                 >
-                  Cart<span className={styles.cart_items_mobile}>1</span>
+                  Cart
+                  <span className={styles.cart_items_mobile}>
+                    {totalQuantities === 0 ? null : totalQuantities}
+                  </span>
                 </button>
               </li>
               <li>
@@ -181,7 +184,10 @@ const Nav = () => {
               </li>
               <li>
                 <button type='button' onClick={() => setShowCart(true)}>
-                  Cart<span className={styles.cart_items}>1</span>
+                  Cart
+                  <span className={styles.cart_items}>
+                    {totalQuantities === 0 ? '' : totalQuantities}
+                  </span>
                 </button>
               </li>
             </ul>
