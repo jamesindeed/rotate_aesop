@@ -1,32 +1,51 @@
 import React from 'react'
 import { client, urlFor } from '../../lib/client'
 import styles from '../../styles/Product.module.scss'
+import useWindowSize from '../../utils/useWindowSize'
 
 const ProductDetails = ({ product }) => {
+  const { width } = useWindowSize()
+
   console.log('product', product)
   return (
     <div className={styles.product_container}>
       <div className={styles.product_wrapper}>
         {/* DETAILS */}
         <div className={styles.product_details_wrapper}>
-          <nav className={styles.breadcrumbs}>
-            <ul>
-              <li>
-                <a>Skin</a>
-              </li>
-              <li>
-                <a>Cleanse</a>
-              </li>
-            </ul>
-          </nav>
+          {width > 640 && (
+            <nav className={styles.breadcrumbs}>
+              <ul>
+                <li>
+                  <a>Skin</a>
+                </li>
+                <li>
+                  <a>Cleanse</a>
+                </li>
+              </ul>
+            </nav>
+          )}
+
           <div className={styles.product_details}>
-            <div className={styles.product_details_inner}>
-              <header>
-                <h1>{product.title}</h1>
-              </header>
-              <div className={styles.product_details_description}>
-                <p>{product.description}</p>
+            {/* MOBILE INNER */}
+            {width > 640 && width < 1024 && (
+              <div className={styles.product_details_inner_mobile}>
+                <header>
+                  <h1>{product.title}</h1>
+                  <p>{product.description}</p>
+                </header>
               </div>
+            )}
+            <div className={styles.product_details_inner}>
+              {(width < 640 || width >= 1025) && (
+                <>
+                  <header>
+                    <h1>{product.title}</h1>
+                  </header>
+                  <div className={styles.product_details_description}>
+                    <p>{product.description}</p>
+                  </div>
+                </>
+              )}
               <div className={styles.product_details_details}>
                 <dl>
                   <dt>Suited to</dt>
@@ -52,11 +71,10 @@ const ProductDetails = ({ product }) => {
                         xmlns='http://www.w3.org/2000/svg'
                         fill='none'
                         stroke='currentColor'
-                        stroke-width='1.5'
                         stroke-linecap='round'
                         stroke-linejoin='round'
                       >
-                        <circle cx='12' cy='12' r='10' />
+                        <circle cx='12' cy='12' r='10' stroke-width='1.5' />
                         <line x1='12' y1='8' x2='12' y2='16' stroke-width='2' />
                         <line x1='8' y1='12' x2='16' y2='12' stroke-width='2' />
                       </svg>
@@ -92,7 +110,7 @@ const ProductDetails = ({ product }) => {
                   </li>
                 </ul>
                 <button className={styles.product_add_cart}>
-                  <span>Add to your cart — £23.00</span>
+                  <span>Add to your cart — £{product.price}.00</span>
                 </button>
                 {/* ?? */}
                 <div></div>
@@ -127,6 +145,18 @@ const ProductDetails = ({ product }) => {
         </div>
         {/* IMAGE */}
         <div className={styles.product_image}>
+          {width < 640 && (
+            <nav className={styles.breadcrumbs}>
+              <ul>
+                <li>
+                  <a>Skin</a>
+                </li>
+                <li>
+                  <a>Cleanse</a>
+                </li>
+              </ul>
+            </nav>
+          )}
           <div className={styles.product_image_inner}>
             <figure>
               <picture>
