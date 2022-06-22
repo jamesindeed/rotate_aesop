@@ -8,8 +8,6 @@ const ProductDetails = ({ product }) => {
   const { width } = useWindowSize()
   const { onAdd, variant, setVariant } = useStateContext()
 
-  console.log('product', product)
-
   const handleChange = (e) => {
     setVariant(e.target.value)
   }
@@ -100,12 +98,12 @@ const ProductDetails = ({ product }) => {
                   <li>
                     <label>
                       <input
-                        value={product.sizes[0]}
+                        value='1'
                         onChange={handleChange}
                         aria-checked='true'
                         type='radio'
                         name='radio'
-                        checked
+                        defaultChecked
                       />
                       <span className={styles.product_radio}></span>
                       <span className={styles.product_size}>
@@ -116,7 +114,7 @@ const ProductDetails = ({ product }) => {
                   <li>
                     <label>
                       <input
-                        value={product.sizes[1]}
+                        value='2'
                         onChange={handleChange}
                         aria-checked='true'
                         type='radio'
@@ -131,7 +129,7 @@ const ProductDetails = ({ product }) => {
                 </ul>
                 <button
                   className={styles.product_add_cart}
-                  onClick={() => onAdd(product)}
+                  onClick={() => onAdd(product, 1)}
                 >
                   <span>Add to your cart — £{product.price}.00</span>
                 </button>
@@ -185,7 +183,7 @@ const ProductDetails = ({ product }) => {
                 <img
                   alt='In Two Minds Facial Cleanser in amber glass bottle '
                   src={
-                    variant === '200 mL'
+                    variant === '2'
                       ? urlFor(product.Images[1])
                       : urlFor(product.Images[0])
                   }
