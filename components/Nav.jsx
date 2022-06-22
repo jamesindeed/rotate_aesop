@@ -7,12 +7,29 @@ import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 
 const Nav = () => {
   const { width } = useWindowSize()
-  const { showCart, setShowCart, totalQuantities } = useStateContext()
+  const { showCart, setShowCart, totalQuantities, cartItems } =
+    useStateContext()
 
   return (
     <>
       {/* CART */}
-      {showCart && <Cart />}
+      {cartItems.length > 0 && showCart && <Cart />}
+      {showCart && cartItems.length === 0 && (
+        <>
+          <div
+            className={styles.empty_cart_container}
+            onClick={() => setShowCart(false)}
+          >
+            <div className={styles.empty_cart}>
+              <div className={styles.empty_cart_alert_wrapper}>
+                <p className={styles.empty_cart_alert}>
+                  You have no items in your cart
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
       {/* NAV */}
       <div className={styles.nav}>
         {width > 1025 && (
@@ -186,7 +203,7 @@ const Nav = () => {
                 <button type='button' onClick={() => setShowCart(true)}>
                   Cart
                   <span className={styles.cart_items}>
-                    {totalQuantities === 0 ? '' : totalQuantities}
+                    {totalQuantities === 0 ? null : totalQuantities}
                   </span>
                 </button>
               </li>
