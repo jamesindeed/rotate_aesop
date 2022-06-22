@@ -114,23 +114,11 @@
         }
       }
 
+      // CART PRODUCTS LIST
       .cart_products_list {
         list-style: none;
         margin: 0;
         padding: 0;
-
-        .cart_products_list_item {
-          // APPLY TO EACH PRODUCT
-          //   border-bottom: 1px solid rgba(255, 254, 242, 0.1);
-
-          @media (min-width: 640px) {
-            -ms-flex-align: center;
-            align-items: center;
-            display: -ms-flexbox;
-            display: flex;
-            padding: 15px 0;
-          }
-        }
       }
     }
     // CART SUMMARY

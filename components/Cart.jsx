@@ -3,9 +3,11 @@ import styles from '../styles/Cart.module.scss'
 import useWindowSize from '../utils/useWindowSize'
 import { useStateContext } from '../context/context'
 
+import CartProduct from './CartProduct'
+
 const Cart = () => {
   const { width } = useWindowSize()
-  const { showCart, setShowCart } = useStateContext()
+  const { showCart, setShowCart, cartItems } = useStateContext()
 
   return (
     <div className={styles.cart}>
@@ -13,7 +15,7 @@ const Cart = () => {
         <div className={styles.cart_products}>
           <div className={styles.cart_products_header}>
             <div className={styles.cart_products_title}>Cart</div>
-            {width > 640 && (
+            {width >= 640 && (
               <>
                 <div className={styles.cart_products_size}>Size</div>
                 <div className={styles.cart_products_quantity}>Quantity</div>
@@ -32,13 +34,15 @@ const Cart = () => {
             </button>
           </div>
           <ul className={styles.cart_products_list}>
-            <li className={styles.cart_products_list_item}>
-              {/* CART PRODUCTS */}
-            </li>
+            {/* {cartItems.length > 0 &&
+              cartItems.map((item) => (
+                <CartProduct key={item._id} item={item} />
+              ))} */}
+            <CartProduct />
           </ul>
         </div>
         <div className={styles.cart_summary}>
-          {width > 640 ? (
+          {width >= 640 ? (
             <div className={styles.cart_summary_wrapper}>
               <div className={styles.cart_summary_promo}>
                 <button className={styles.cart_summary_promo_btn}>
