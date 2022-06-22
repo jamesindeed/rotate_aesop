@@ -1,6 +1,4 @@
 .info_container {
-  // Need to fix position
-  transform: translateY(-1px);
   z-index: 2;
   clear: both;
   overflow: visible;
@@ -13,7 +11,7 @@
   height: auto;
   background: #252525;
   color: #fffef2;
-  padding: 12px 20px 8px;
+  padding: 12px 20px 7px;
 
   @media (max-width: 1025px) {
     padding-bottom: 9.5px;
@@ -51,6 +49,8 @@
 
       @media (min-width: 1025px) {
         text-align: center;
+        // Need to fix position
+        transform: translateY(-1px);
       }
     }
 
