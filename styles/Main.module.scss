@@ -7,6 +7,25 @@
   background-color: rgb(255, 254, 242);
   box-sizing: border-box;
   color: rgb(51, 51, 51);
-  font-family: Suisse Regular, sans-serif;
+  font-family: 'Suisse', sans-serif;
   min-height: 100%;
+
+  svg {
+    transform: rotate(180deg);
+  }
+
+  h1 {
+    font-family: 'Suisse', sans-serif;
+    font-weight: 600;
+    transform: translateY(-12px);
+    color: rgb(86, 86, 86);
+  }
+
+  p {
+    font-family: 'Suisse', sans-serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #780000;
+    text-transform: uppercase;
+  }
 }
