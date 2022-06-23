@@ -34,11 +34,11 @@ const Cart = () => {
             </button>
           </div>
           <ul className={styles.cart_products_list}>
-            {/* {cartItems.length > 0 &&
+            {cartItems.length > 0 &&
               cartItems.map((item) => (
                 <CartProduct key={item._id} item={item} />
-              ))} */}
-            <CartProduct />
+              ))}
+            {/* <CartProduct /> */}
           </ul>
         </div>
         <div className={styles.cart_summary}>

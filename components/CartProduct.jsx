@@ -6,6 +6,7 @@ import { useStateContext } from '../context/context'
 const CartProduct = ({ item }) => {
   const { width } = useWindowSize()
   const [open, setOpen] = useState(false)
+  const { onRemove } = useStateContext()
 
   const handleAmountChange = (e) => {
     // toggleCartItemQuantity(item._id, e.target.value)
@@ -19,10 +20,10 @@ const CartProduct = ({ item }) => {
           <>
             <div className={styles.cart_product_name_wrapper}>
               <a className={styles.cart_product_name} href='/'>
-                In Two Minds Facial Cleanser
+                {item.title}
               </a>
               <div className={styles.cart_product_size}>
-                <span>100 mL </span>
+                <span>100 mL</span>
               </div>
             </div>
             <div className={styles.cart_product_quantity}>
@@ -32,7 +33,9 @@ const CartProduct = ({ item }) => {
                   className={styles.cart_product_quantity_button}
                   aria-expanded='false'
                 >
-                  <span className={styles.cart_product_quantity_amount}>1</span>
+                  <span className={styles.cart_product_quantity_amount}>
+                    {item.quantity}
+                  </span>
                   <svg
                     className={styles.cart_product_quantity_icon}
                     role='img'
@@ -108,19 +111,24 @@ const CartProduct = ({ item }) => {
               </div>
             </div>
             <div className={styles.cart_product_remove}>
-              <button className={styles.cart_product_remove_button}>
+              <button
+                className={styles.cart_product_remove_button}
+                onClick={() => onRemove(item)}
+              >
                 Remove
               </button>
             </div>
             <div>
-              <span className={styles.cart_product_total}>£23.00</span>
+              <span className={styles.cart_product_total}>
+                £{item.price}.00
+              </span>
             </div>
           </>
         ) : (
           <>
             <div className={styles.mobile_cart_product_wrapper}>
               <a className={styles.mobile_cart_product_name} href='/'>
-                In Two Minds Facial Cleanser
+                {item.title}
               </a>
               <div className={styles.mobile_cart_product_quantity}>
                 <div>
@@ -130,7 +138,7 @@ const CartProduct = ({ item }) => {
                     aria-expanded='false'
                   >
                     <span className={styles.cart_product_quantity_amount}>
-                      1
+                      {item.quantity}
                     </span>
                     <svg
                       className={styles.mobile_cart_product_quantity_icon}
@@ -223,13 +231,18 @@ const CartProduct = ({ item }) => {
                   <span>100 mL </span>
                 </div>
                 <div className={styles.mobile_cart_product_remove}>
-                  <button className={styles.mobile_cart_product_remove_button}>
+                  <button
+                    className={styles.mobile_cart_product_remove_button}
+                    onClick={() => onRemove(item)}
+                  >
                     Remove
                   </button>
                 </div>
               </div>
               <div>
-                <span className={styles.mobile_cart_product_total}>£23.00</span>
+                <span className={styles.mobile_cart_product_total}>
+                  £{item.price}.00
+                </span>
               </div>
             </div>
           </>
