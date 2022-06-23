@@ -12,6 +12,12 @@ const ProductDetails = ({ product }) => {
     setVariant(e.target.value)
   }
 
+  const handleAddToCart = () => {
+    let newProduct = { ...product, variant: variant }
+    onAdd(newProduct, 1)
+    console.log(newProduct)
+  }
+
   return (
     <div className={styles.product_container}>
       <div className={styles.product_wrapper}>
@@ -129,9 +135,13 @@ const ProductDetails = ({ product }) => {
                 </ul>
                 <button
                   className={styles.product_add_cart}
-                  onClick={() => onAdd(product, 1)}
+                  onClick={handleAddToCart}
                 >
-                  <span>Add to your cart — £{product.price}.00</span>
+                  <span>
+                    Add to your cart — £
+                    {variant === '200 mL' ? product.price[1] : product.price[0]}
+                    .00
+                  </span>
                 </button>
                 <div></div>
               </div>

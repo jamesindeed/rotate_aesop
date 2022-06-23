@@ -8,14 +8,18 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0)
   const [totalQuantities, setTotalQuantities] = useState(0)
   const [qty, setQty] = useState(1)
-  const [variant, setVariant] = useState('')
+  const [variant, setVariant] = useState('100 mL')
 
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
-      (item) => item._id === product._id
+      (item) => item._id === product._id && item.variant === product.variant
     )
+    // console.log('ITEM', item)
+    // console.log('PRODUCT', product)
     setTotalPrice((prevPrice) => {
-      return prevPrice + product.price * quantity
+      let variantPrice =
+        variant === '200 mL' ? product.price[1] : product.price[0]
+      return prevPrice + variantPrice * quantity
     })
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
 
@@ -25,11 +29,8 @@ export const StateContext = ({ children }) => {
           return {
             ...cartProduct,
             quantity: cartProduct.quantity + quantity,
-            //variant
-            variant: variant,
           }
       })
-
       setCartItems(updatedCartItems)
     } else {
       product.quantity = quantity
@@ -40,9 +41,11 @@ export const StateContext = ({ children }) => {
 
   const toggleCartItemQuantity = (id, value) => {
     let foundProduct = cartItems.find((item) => item._id === id)
+    let variantPrice =
+      variant === '200 mL' ? foundProduct.price[1] : foundProduct.price[0]
     const newCartItems = cartItems.filter((item) => item._id !== id)
     setCartItems([...newCartItems, { ...foundProduct, quantity: value }])
-    setTotalPrice(foundProduct.price * value)
+    setTotalPrice(variantPrice * value)
     setTotalQuantities(value)
   }
 

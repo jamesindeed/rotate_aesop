@@ -14,7 +14,8 @@ export default {
     {
       name: 'price',
       title: 'Price',
-      type: 'number',
+      type: 'array',
+      of: [{ type: 'number' }],
     },
     {
       name: 'sizes',
