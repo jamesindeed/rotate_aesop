@@ -98,7 +98,7 @@ const ProductDetails = ({ product }) => {
                   <li>
                     <label>
                       <input
-                        value='1'
+                        value='100 mL'
                         onChange={handleChange}
                         aria-checked='true'
                         type='radio'
@@ -114,7 +114,7 @@ const ProductDetails = ({ product }) => {
                   <li>
                     <label>
                       <input
-                        value='2'
+                        value='200 mL'
                         onChange={handleChange}
                         aria-checked='true'
                         type='radio'
@@ -183,7 +183,7 @@ const ProductDetails = ({ product }) => {
                 <img
                   alt='In Two Minds Facial Cleanser in amber glass bottle '
                   src={
-                    variant === '2'
+                    variant === '200 mL'
                       ? urlFor(product.Images[1])
                       : urlFor(product.Images[0])
                   }

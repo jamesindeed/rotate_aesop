@@ -6,10 +6,10 @@ import { useStateContext } from '../context/context'
 const CartProduct = ({ item }) => {
   const { width } = useWindowSize()
   const [open, setOpen] = useState(false)
-  const { onRemove } = useStateContext()
+  const { onRemove, toggleCartItemQuantity } = useStateContext()
 
   const handleAmountChange = (e) => {
-    // toggleCartItemQuantity(item._id, e.target.value)
+    toggleCartItemQuantity(item._id, e.target.value)
     setOpen(false)
   }
 
@@ -23,7 +23,7 @@ const CartProduct = ({ item }) => {
                 {item.title}
               </a>
               <div className={styles.cart_product_size}>
-                <span>100 mL</span>
+                <span>{item.variant}</span>
               </div>
             </div>
             <div className={styles.cart_product_quantity}>
@@ -228,7 +228,7 @@ const CartProduct = ({ item }) => {
             <div className={styles.mobile_cart_product_wrapper}>
               <div className={styles.mobile_cart_product_detail_wrapper}>
                 <div className={styles.mobile_cart_product_size}>
-                  <span>100 mL </span>
+                  <span>{item.variant}</span>
                 </div>
                 <div className={styles.mobile_cart_product_remove}>
                   <button

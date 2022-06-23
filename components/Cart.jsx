@@ -7,7 +7,7 @@ import CartProduct from './CartProduct'
 
 const Cart = () => {
   const { width } = useWindowSize()
-  const { showCart, setShowCart, cartItems } = useStateContext()
+  const { showCart, setShowCart, cartItems, totalPrice } = useStateContext()
 
   return (
     <div className={styles.cart}>
@@ -38,7 +38,6 @@ const Cart = () => {
               cartItems.map((item) => (
                 <CartProduct key={item._id} item={item} />
               ))}
-            {/* <CartProduct /> */}
           </ul>
         </div>
         <div className={styles.cart_summary}>
@@ -85,7 +84,7 @@ const Cart = () => {
                   Subtotal (Tax Incl. )
                 </h5>
                 <div className={styles.cart_summary_subtotal}>
-                  <span>£23.00</span>
+                  <span>£{totalPrice}.00</span>
                 </div>
               </div>
               <div className={styles.cart_summary_row}>
@@ -339,7 +338,7 @@ const Cart = () => {
                     Subtotal (Tax Incl. )
                   </h5>
                   <div className={styles.mobile_cart_summary_subtotal}>
-                    <span>£23.00</span>
+                    <span>£{totalPrice}.00</span>
                   </div>
                 </div>
                 <div className={styles.mobile_cart_summary_checkout_wrapper}>
