@@ -41,8 +41,8 @@ const ProductDetails = ({ product }) => {
             {width > 640 && width < 1024 && (
               <div className={styles.product_details_inner_mobile}>
                 <header>
-                  <h1>{product.title}</h1>
-                  <p>{product.description}</p>
+                  <h1>{product?.title}</h1>
+                  <p>{product?.description}</p>
                 </header>
               </div>
             )}
@@ -50,10 +50,10 @@ const ProductDetails = ({ product }) => {
               {(width < 640 || width >= 1025) && (
                 <>
                   <header>
-                    <h1>{product.title}</h1>
+                    <h1>{product?.title}</h1>
                   </header>
                   <div className={styles.product_details_description}>
-                    <p>{product.description}</p>
+                    <p>{product?.description}</p>
                   </div>
                 </>
               )}
@@ -62,13 +62,13 @@ const ProductDetails = ({ product }) => {
                   <dt>Suited to</dt>
                   <dd>
                     <div>
-                      <p>{product.suitedTo}</p>
+                      <p>{product?.suitedTo}</p>
                     </div>
                   </dd>
                   <dt>Skin feel</dt>
                   <dd>
                     <div>
-                      <p>{product.skinFeel}</p>
+                      <p>{product?.skinFeel}</p>
                     </div>
                   </dd>
                   <dt>
@@ -93,7 +93,7 @@ const ProductDetails = ({ product }) => {
                   </dt>
                   <dd>
                     <div>
-                      <p>{product.keyIngredients.join(', ')}</p>
+                      <p>{product?.keyIngredients.join(', ')}</p>
                     </div>
                   </dd>
                 </dl>
@@ -194,8 +194,8 @@ const ProductDetails = ({ product }) => {
                   alt='In Two Minds Facial Cleanser in amber glass bottle '
                   src={
                     variant === '200 mL'
-                      ? urlFor(product.Images[1])
-                      : urlFor(product.Images[0])
+                      ? urlFor(product?.Images[1])
+                      : urlFor(product?.Images[0])
                   }
                 />
               </picture>
