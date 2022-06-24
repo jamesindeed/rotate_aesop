@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
-
+// @ts-ignore
 const Context = createContext()
 
 export const StateContext = ({ children }) => {
