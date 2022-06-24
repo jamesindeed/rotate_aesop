@@ -11,11 +11,9 @@ export const StateContext = ({ children }) => {
   const [variant, setVariant] = useState('100 mL')
 
   const onAdd = (product, quantity) => {
-    const checkProductInCart = cartItems.find(
+    const checkProductInCart = cartItems?.find(
       (item) => item._id === product._id && item.variant === product.variant
     )
-    // console.log('ITEM', item)
-    // console.log('PRODUCT', product)
     setTotalPrice((prevPrice) => {
       let variantPrice =
         variant === '200 mL' ? product.price[1] : product.price[0]
@@ -24,7 +22,7 @@ export const StateContext = ({ children }) => {
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
 
     if (checkProductInCart) {
-      const updatedCartItems = cartItems.map((cartProduct) => {
+      const updatedCartItems = cartItems?.map((cartProduct) => {
         if (cartProduct._id === product._id)
           return {
             ...cartProduct,
@@ -39,26 +37,56 @@ export const StateContext = ({ children }) => {
     }
   }
 
-  const toggleCartItemQuantity = (id, value) => {
-    let foundProduct = cartItems.find((item) => item._id === id)
+  const toggleCartItemQuantity = (id, value, itemVariant) => {
+    // let index = cartItems?.indexOf((item) => item._id === id)
+
+    let foundProduct = cartItems?.find(
+      (item) => item._id === id && item.variant === itemVariant
+    )
+
     let variantPrice =
-      variant === '200 mL' ? foundProduct.price[1] : foundProduct.price[0]
-    const newCartItems = cartItems.filter((item) => item._id !== id)
-    setCartItems([...newCartItems, { ...foundProduct, quantity: value }])
-    setTotalPrice(variantPrice * value)
+      itemVariant === '200 mL' ? foundProduct.price[1] : foundProduct.price[0]
+    let oppositeVariantPrice =
+      itemVariant === '200 mL' ? foundProduct.price[0] : foundProduct.price[1]
+    // let multipleVariant = cartItems.find((item) => item.variant !== itemVariant)
+
+    let oppositeVariant = cartItems?.find(
+      (item) => item._id === id && item.variant !== itemVariant
+    )
+
+    setTotalPrice(
+      oppositeVariant
+        ? variantPrice * value + oppositeVariantPrice * oppositeVariant.quantity
+        : variantPrice * value
+    )
+
     setTotalQuantities(value)
+
+    const newCartItems = cartItems.filter((item) => item !== foundProduct)
+
+    setCartItems([...newCartItems, { ...foundProduct, quantity: value }])
+    // TODO: INSERTING BACK AT INDEX CAUSING AMOUNT DROP DOWN NOT TO CLOSE
+    // const newProductAmount = foundProduct.push({ quantity: value })
+    // const newProduct = newCartItems.splice(index, 0, newProductAmount)
+    // setCartItems(newProduct)
   }
 
   const onRemove = (product) => {
-    let foundProduct = cartItems.find((item) => item._id === product._id)
-    const newCartItems = cartItems.filter((item) => item._id !== product._id)
+    let foundProduct = cartItems?.find(
+      (item) => item._id === product._id && item.variant === product.variant
+    )
+    const newCartItems = cartItems?.filter((item) => item !== foundProduct)
+
+    let variantPrice =
+      product.variant === '200 mL'
+        ? foundProduct.price[1]
+        : foundProduct.price[0]
 
     setTotalPrice(
-      (prevTotalPrice) =>
-        prevTotalPrice - foundProduct.price * foundProduct.quantity
+      (prevTotalPrice) => prevTotalPrice - variantPrice * foundProduct.quantity
     )
     setTotalQuantities(
-      (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
+      (prevTotalQuantities) => prevTotalQuantities - foundProduct?.quantity
     )
     setCartItems(newCartItems)
   }
