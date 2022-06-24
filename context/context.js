@@ -48,7 +48,6 @@ export const StateContext = ({ children }) => {
       itemVariant === '200 mL' ? foundProduct.price[1] : foundProduct.price[0]
     let oppositeVariantPrice =
       itemVariant === '200 mL' ? foundProduct.price[0] : foundProduct.price[1]
-    // let multipleVariant = cartItems.find((item) => item.variant !== itemVariant)
 
     let oppositeVariant = cartItems?.find(
       (item) => item._id === id && item.variant !== itemVariant
