@@ -139,7 +139,9 @@ const ProductDetails = ({ product }) => {
                 >
                   <span>
                     Add to your cart — £
-                    {variant === '200 mL' ? product.price[1] : product.price[0]}
+                    {variant === '200 mL'
+                      ? product?.price[1]
+                      : product?.price[0]}
                     .00
                   </span>
                 </button>
