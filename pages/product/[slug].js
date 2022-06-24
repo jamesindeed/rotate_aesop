@@ -195,7 +195,7 @@ const ProductDetails = ({ product }) => {
                 <img
                   alt='In Two Minds Facial Cleanser in amber glass bottle '
                   src={
-                    variant === '200 mL'
+                    product?.Images && variant === '200 mL'
                       ? urlFor(product?.Images[1])
                       : urlFor(product?.Images[0])
                   }
