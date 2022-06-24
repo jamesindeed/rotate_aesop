@@ -113,7 +113,7 @@ const ProductDetails = ({ product }) => {
                       />
                       <span className={styles.product_radio}></span>
                       <span className={styles.product_size}>
-                        {product.sizes[0]}
+                        {product?.sizes[0]}
                       </span>
                     </label>
                   </li>
@@ -128,7 +128,7 @@ const ProductDetails = ({ product }) => {
                       />
                       <span className={styles.product_radio}></span>
                       <span className={styles.product_size}>
-                        {product.sizes[1]}
+                        {product?.sizes[1]}
                       </span>
                     </label>
                   </li>
