@@ -6,10 +6,10 @@ import { useStateContext } from '../context/context'
 const CartProduct = ({ item }) => {
   const { width } = useWindowSize()
   const [open, setOpen] = useState(false)
-  const { onRemove, toggleCartItemQuantity, variant } = useStateContext()
+  const { onRemove, toggleCartItemQuantity } = useStateContext()
 
   const handleAmountChange = (e) => {
-    toggleCartItemQuantity(item._id, e.target.value)
+    toggleCartItemQuantity(item._id, e.target.value, item.variant)
     setOpen(false)
   }
 
