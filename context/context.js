@@ -59,7 +59,10 @@ export const StateContext = ({ children }) => {
         : variantPrice * value
     )
 
-    setTotalQuantities(value)
+    // setTotalQuantities(value)
+    setTotalQuantities(
+      oppositeVariant ? oppositeVariant.quantity + value : value
+    )
 
     const newCartItems = cartItems.filter((item) => item !== foundProduct)
 
