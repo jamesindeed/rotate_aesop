@@ -192,14 +192,18 @@ const ProductDetails = ({ product }) => {
           <div className={styles.product_image_inner}>
             <figure>
               <picture>
-                <img
-                  alt='In Two Minds Facial Cleanser in amber glass bottle '
-                  // src={
-                  //   product?.Images && variant === '200 mL'
-                  //     ? urlFor(product?.Images[1])
-                  //     : urlFor(product?.Images[0])
-                  // }
-                />
+                {product ? (
+                  <img
+                    alt='In Two Minds Facial Cleanser in amber glass bottle '
+                    src={
+                      product?.Images && variant === '200 mL'
+                        ? urlFor(product?.Images[1])
+                        : urlFor(product?.Images[0])
+                    }
+                  />
+                ) : (
+                  <img src='https://www.aesop.com/u1nb1km7t5q7/7tnEMRS4AaGorVjN4Qh6iN/77dd7f1107054d94f3bdc1a845b083d8/Aesop-Skin-In-Two-Minds-Facial-Cleanser-100mL-Large-835x962px.png' />
+                )}
               </picture>
             </figure>
           </div>
